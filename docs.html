@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lyra-JS</title>
+
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<meta name="keywords" content="lyra,lyra-js,lyrajs,date,dates,string,array,javascript,npm,cdn,docs,documentation">
+	<meta name="description" content="A tiny javascript library that makes code look neater, dates easier and much more">
+
+	<script src="public/scripts/lyra.min.js"></script>
+
+	<script src="public/scripts/jquery.js"></script>
+
+	<link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+
+	<script src="public/bootstrap/js/bootstrap.min.js"></script>
+
+	<script defer src="public/scripts/all.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="public/main.css">
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand mb-0 h1" href="#">Lyra</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="nav-link" href="./index.html">Home</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="./docs.html">Documentation</a>
+          </li>
+          <li class="nav-item">
+	        <a class="nav-link" href="./about.html">About</a>
+	      </li>
+	    </ul>
+	    <ul class="navbar-nav my-2 my-lg-0">
+				<li class="nav-item"><a href="https://www.github.com/amansahil/lyra-js" target="_blank" class="nav-link">
+					<i class="fab fa-github fa-lg"></i>
+					&nbsp;GitHub
+					</a>
+				</li>
+			</ul>
+	  </div>
+	</nav>
+	<div class="container">
+		<h1>Lyra-JS</h1>
+				<h5><a href="#selectors">Selectors</a> / <a href="#dates">Dates</a> / <a href="#stringprototypes">String Prototypes</a> / <a href="#arrayprototypes">Array Prototypes</a> / <a href="#functions">Functions</a></h5>
+				<h2 id="selectors">Selectors</h2>
+
+				<h3 class="codeTitle first" id="lr.i">lr.i()</h3>
+				<p>Returns the element that has the ID attribute with specified value. Takes in one argument that corresponds to the name of the ID.</p>
+				<div class="code">
+					lr.i("id")		
+				</div>
+
+				<h3 class="codeTitle" id="lr.q">lr.q()</h3>
+				<p>Returns the first element that matches a specified ID, class name or tag name. Takes in one argument that corresponds to the name of the ID, class or tag.</p>
+				<div class="code">
+					lr.q(".className")		
+				</div>
+
+				<h3 class="codeTitle" id="lr.qa">lr.qa()</h3>
+				<p>Returns all elements that matches a specified ID, class or tag name. Takes in one argument that corresponds to the name of the ID, class or tag.</p>
+				<div class="code">
+					lr.qa("h1")		
+				</div>
+
+				<h2 id="dates">Dates</h2>
+
+				<h3 class="codeTitle first" id="lr.convertDateAdvanced">lr.convertDateAdvanced()</h3>
+				<p>lr.convertDateAdvanced is an important and useful function as most date functions in JavaScript and other date libraries, including this one, expects a valid date string or date object as an argument.<br /><br /> lr.convertDateAdvanced can convert any date format to a valid date object or string. It takes in three arguments, first one is the format of the date you are passing on, second is the date and third is whether you want a date string or object.<br /><br />If you would like a date object, pass a string "short" as the third argument, like in the third example below.</p>
+
+				<div class="code">
+						lr.convertDateAdvanced("dd, mm yy", "30, June 2018") <comment>//Returns Sat Jun 30 2018 00:00:00</comment>	
+						<br/><br/>
+						lr.convertDateAdvanced("yy dd-mm hh:min:ss", " 2018 28-3 13:30:00") <comment>//Returns Wed Mar 28 2018 13:30:10</comment>
+						<br/><br/>
+						lr.convertDateAdvanced("yy-mm hh-min @dd th", "2018-07 15:10 @10 th", "short") <comment>//Returns date object</comment>
+				</div>
+
+				<h5>Date formatting keys: </h5>
+
+				<p><strong>yy</strong> (required) - Full year. Eg: 2018 </p>
+				<p><strong>mm</strong> (required) - Full Month name, half month name or month number. Eg: January, Sep or 7 </p>
+				<p><strong>dd</strong> (required) - Date number. Eg: 3</p>
+
+				<p><strong>hh</strong> (optional*) - Hour number. Eg: 13, 3</p>
+				<p><strong>min</strong> (optional) - Minute number. Eg: 25</p>
+				<p><strong>ss</strong> (optional) - Second number. Eg: 5</p>
+
+				<p>*Hours is optional; however, it is required if min is mentioned in the format.</p>
+
+				<strong>Note: Formatting keys are case sensitive and shouldn't have a letter or word attached to it. Eg: ddday for 15day is invalid.</strong>
+
+				<h3 class="codeTitle" id="lr.convertDate">lr.convertDate()</h3>
+
+				<p>lr.convertDate is a simplified version of <a href="#lr.convertDateAdvanced">lr.convertDateAdvanced</a>. Formatting keys can have only one separator eg: - , @ etc.<br/><br />It takes in three arguments, first one is the format of the date your passing on, second is the date and third is whether you want a date string or object.<br /><br />If you would like a date object, pass a string "short" as the third argument, like in the first example below.<br /><br /> If you would like to add time, pass it in with second argument and put a space between date and time, the time should be on the right hand side, no need to mention it in the first argument</p>
+
+				<div class="code">
+						lr.convertDate("dd-mm-yy", "12-05-2018", "short") <comment>//Returns date object</comment>	
+						<br/><br/>
+						lr.convertDate("yy@mm@dd", "2018@3@3 13:30:00") <comment>//Returns Sat Mar 03 2018 13:30:00</comment>
+				</div>
+
+				<h5>Date formatting keys: </h5>
+
+				<p><strong>yy</strong> (required) - Full year. Eg: 2018 </p>
+				<p><strong>mm</strong> (required) - Full month name, half month name or month number. Eg: January, Sep or 7 </p>
+				<p><strong>dd</strong> (required) - Date number. Eg: 3</p>
+
+				<strong>Note: Formatting keys are case sensitive and shouldn't have a letter or word attached to it. Eg: ddday for 15day is invalid.</strong>
+
+				<h3 class="codeTitle" id="lr.getDate">lr.getDate()</h3>
+
+				<p>Get a date in any format you like, essentially the opposite of <a href="#lr.convertDateAdvanced">lr.convertDateAdvanced</a>. It takes in two arguments, first the format you would like the date to be in and second which is optional, a specific date that needs to be a valid date string or object.</p>
+
+				<div class="code">
+						lr.getDate("ddth, fm yy", "Sat Jun 30 2018") <comment>//Returns 30th, June 2018</comment><br /><br />
+						lr.getDate("dd sm") <comment>//Returns current date in specified format (Eg: 18 Sep)</comment>
+				</div>
+
+				<h5>Formatting keys:</h5>
+
+				<p><strong>yy</strong>- Full year. Eg: 2018</p>
+				<p><strong>mm</strong>- Month number. Eg: 12</p>
+				<p><strong>fm</strong>- Full month name. Eg: February</p>
+				<p><strong>sm</strong>- Short month name. Eg: May</p>
+				<p><strong>dd</strong>- Day number. Eg: 5</p>
+				<p><strong>dn</strong>- Day name. Eg: Tuesday</p>
+				<p><strong>dsn</strong>- Short day name. Eg: Fri</p>
+				<p><strong>hh</strong>- Hour number. Eg: 13</p>
+				<p><strong>min</strong>- Minute number. Eg: 56</p>
+				<p><strong>ss</strong>- Second number. Eg: 12</p>
+
+				<h3 class="codeTitle" id="lr.getTimeByZone">lr.getTimeByZone()</h3>
+
+				<p>Get date and time of any time zone. The function takes one argument, which is the time zone ID of the time offset.</p>
+
+				<div class="code">
+					lr.getTimeByZone("JST") <comment>//Returns time in Japan (JST - Japanese Standard Time)</comment><br /><br />
+					lr.getTimeByZone("IST") <comment>//Returns time in India (IST - Indian Standard Time)</comment>
+				</div><br />
+
+				<p>If you would like to know time zone ID / time offset check out the link <a href="#">here</a></p>
+
+				<p>If you know the time offset or want to know the time zone ID of any device use <a href="#lr.getCC">lr.getCC</a></p>
+
+				<h5 class="codeTitle" id="lr.convertTimeByZone">lr.convertTimeByZone()</h5>
+
+				<p>Convert time from one country's / time zone's to another country's / time zone's time. The function takes in three arguments, first one is the initial time zone ID, second is the time zone ID you want to convert to, third is the date and time that needs to be a valid date string or object.</p>
+
+				<div class="code">
+					lr.convertTimeByZone("IST","JST","Sat, 30 Jun 2018 12:43:00") <comment>//Returns Sat Jun 30 2018 16:13:00</comment>
+				</div>
+
+				<h3 class="codeTitle" id="lr.getCC">lr.getCC()</h3>
+
+				<p>Get date and time of any time zone. The function takes one argument, which is the time zone ID of the time offset.</p>
+
+				<div class="code">
+						lr.getCC() <comment>//Retruns time zone ID for device</comment><br /><br />
+						lr.getCC(4) <comment>//Returns time zone ID for time offset of +4:00 hours</comment><br /><br />
+						lr.getCC(-3.5) <comment>//Returns the time zone ID for the time offset of -3:30 hours</comment><br /><br />
+				</div>
+
+				<h3 class="codeTitle" id="lr.add">lr.add()</h3>
+
+				<p>Adds specified parameters to date. The function takes two arguments, first is by how much you want to move the date forward to, second is the date, second argument is optional. If a second argument is not provided it will use current date.</p>
+
+				<div class="code">
+					lr.add("Tuesday", "Sat Jun 30 2018 16:13:00") <comment>//Moves date to next Tuesday. Returns Tue Jul 03 2018 16:13:00</comment><br /><br />
+					lr.add("5 days") <comment>//Adds 5 days to current date</comment><br /><br /> 
+				</div>
+
+				<h5>Keys:</h5>
+
+				<p><strong>Days</strong>- Eg: 5 Days or 1 Day</p>
+				<p><strong>Months</strong>-Eg: 2 Months</p>
+				<p><strong>Years</strong>- Eg: 4 Years</p>
+				<p><strong>Name of day</strong>- Eg: Wednesday</p>
+
+				<p><strong>Hours</strong>- Eg: 5 Hours</p>
+				<p><strong>Minutes</strong>-Eg: 2 Minutes</p>
+				<p><strong>Seconds</strong>- Eg: 4 Seconds</p>
+
+				<h3 class="codeTitle" id="lr.sub">lr.sub()</h3>
+
+				<p>Subtracts specified parameters to date. The function takes two arguments, first is by how much you want to move the date back to, second is the date, second argument is optional. If a second argument is not provided it will use current date.</p>
+
+				<div class="code">
+					lr.sub("Wed", "Sat Jun 30 2018 16:13:00") <comment>//Moves date back to Wednesday. Returns Wed Jun 27 2018 16:13:00</comment><br /><br />
+					lr.sub("5 days") <comment>//Subtracts 5 days from current date</comment><br /><br /> 
+				</div>
+
+				<h5>Keys:</h5>
+
+				<p><strong>Days</strong>- Eg: 5 Days or 1 Day</p>
+				<p><strong>Months</strong>-Eg: 2 Months</p>
+				<p><strong>Years</strong>- Eg: 4 Years</p>
+				<p><strong>Name of day</strong>- Eg: Wednesday</p>
+
+				<p><strong>Hours</strong>- Eg: 5 Hours</p>
+				<p><strong>Minutes</strong>-Eg: 2 Minutes</p>
+				<p><strong>Seconds</strong>- Eg: 4 Seconds</p>
+
+				<h3 class="codeTitle" id="lr.dateDifference">lr.dateDifference()</h3>
+
+				<p>Finds difference between two dates (Leap Year Included). The functions takes three parameters, first the date you want in the L.H.S, second the date you want in the R.H.S, third argument is if you want time too.</p>
+				<p>Pass string "long" in the third parameter if you want hours, minutes and seconds</p>
+
+				<div class="code">
+					lr.dateDifference("Fri Sep 14 2018 15:31:10", "Wed Jun 27 2018 16:13:00", "long")<br /><comment>//Returns 2 Months 16 Days 23 Hours 18 Minutes 10 Seconds</comment><br /><br />
+					lr.dateDifference("Fri Dec 5 2018", "Wed May 2 2010") <comment>//Returns 8 Years 7 Months 4 Days</comment>
+				</div>
+
+				<h2 id="stringprototypes">String Prototypes</h2>
+
+				<h3 class="codeTitle first" id="String.prototype.replaceAll">String.prototype.replaceAll()</h3>
+
+				<p>Replace every occurrence of a word in a string specified in the first argument with the word passed in the second argument.</p>
+
+				<div class="code">
+					"Hello world world".replaceAll("world", "echo") <comment>//Returns Hello echo echo</comment>
+				</div>
+
+				<h3 class="codeTitle" id="String.prototype.titleCase">String.prototype.titleCase()</h3>
+
+				<p>Capitalizes every word in string.</p>
+
+				<div class="code">
+					"this is a title".titleCase() <comment>//Returns This Is A Title</comment>
+				</div>
+
+				<h3 class="codeTitle" id="String.prototype.camelize">String.prototype.camelize()</h3>
+
+				<p>Turns kebab case to camel case.</p>
+
+				<div class="code">
+					"background-text-color".camelize() <comment>//Returns backgroundTextColor</comment>
+				</div>
+
+				<h3 class="codeTitle" id="String.prototype.contains">String.prototype.contains()</h3>
+
+				<p>Checks if string contains argument that is passed on. It also takes a second argument which is a boolean to indicate case sensitivity.</p>
+
+				<div class="code">
+					"This library is awesome".contains("awesome") <comment>//Returns true</comment><br /><br />
+					"This library is awesome".contains("this") <comment>//Returns false</comment><br /><br />
+					"This library is awesome".contains("this", false) <comment>//Returns true</comment>
+				</div>
+
+				<h3 class="codeTitle" id="String.prototype.count">String.prototype.count()</h3>
+
+				<p>Counts number of occurrences of a word in a string.</p>
+
+				<div class="code">
+					"There is hello twice in this sentence, Hello".count("hello") <comment>//Returns 1</comment><br /><br />
+					"There is hello twice in this sentence, Hello".count("hello", false) <comment>//Returns 2</comment>
+				</div>
+
+				<h3 class="codeTitle" id="String.prototype.format">String.prototype.format()</h3>
+
+				<p>Replace keys in a string for words.</p>
+
+				<div class="code">
+					"Hello {key1}, I think you are just {key2}".format({ key1: "World", key2: "great" })<br />
+					<comment>//Returns Hello World, I think you are just great</comment>
+				</div>
+
+				<h3 class="codeTitle" id="String.prototype.shorten">String.prototype.shorten()</h3>
+
+				<p>Shortens string to number of characters mentioned in the first argument and replaces it with characters in the second argument</p>
+
+				<div class="code">
+					"This is not a fairly long string".shorten(7, "...") <comment>//Returns This is...</comment>
+				</div>
+
+				<h3 class="codeTitle" id="String.prototype.forEach">String.prototype.forEach()</h3>
+
+				<p>Loops for each character</p>
+
+				<div class="code">
+					"lyra-js".forEach(function(letter, i){ <br />
+					&nbsp;&nbsp;console.log(letter+"=>"+i) <br />
+					}) <br />
+					<comment>
+						// Returns
+							l=>0
+							y=>1
+							r=>2 
+							a=>3 
+							-=>4 
+							j=>5 
+							s=>6
+					</comment>
+				</div>
+
+				<h3 class="codeTitle" id="String.prototype.forEachWord">String.prototype.forEachWord()</h3>
+
+				<p>Loops for each word</p>
+
+				<div class="code">
+					"Loops for each word".forEachWord(function(word, i){ <br />
+					&nbsp;&nbsp;console.log(word+"=>"+i) <br />
+					}) <br />
+					<comment>
+						// Returns
+						Loops=>0 
+						for=>1
+						each=>2
+						word=>3
+					</comment>
+				</div>
+
+				<h3 class="codeTitle" id="String.prototype.indices">String.prototype.indices()</h3>
+
+				<p>Searches for a letter in a string and returns its position</p>
+
+				<div class="code">
+					"hello world".indices("l") <comment>//Returns Array(3) [ 2, 3, 9 ]</comment>
+				</div>
+
+				<h2 id="arrayprototypes">Array Prototypes</h2>
+
+				<h3 class="codeTitle first" id="Array.prototype.indices">Array.prototype.indices()</h3>
+
+				<p>Checks if array contains a specific value and gives its position. It also takes a second argument which is a boolean to indicate case sensitivity.</p>
+
+				<div class="code">
+					["It", "is", "wednesday", "my", "dudes"].indices("dudes") <comment>//Returns Array [4]</comment><br /><br />
+
+					["It", "is", "wednesday", "my", "dudes"].indices("it") <comment>//Returns Array []</comment><br /><br />
+
+					["It", "is", "wednesday", "my", "dudes"].indices("it", false) <comment>//Returns Array [0]</comment>
+				</div>
+
+				<h3 class="codeTitle" id="Array.prototype.indexOfMax">Array.prototype.indexOfMax()</h3>
+
+				<p>Returns index of max value in an array.</p>
+
+				<div class="code">
+					[56, 78, 42, 10].indexOfMax() <comment>//Returns 1</comment>
+				</div>
+
+				<h3 class="codeTitle" id="Array.prototype.indexOfMin">Array.prototype.indexOfMin()</h3>
+
+				<p>Returns index of min value in an array.</p>
+
+				<div class="code">
+					[56, 78, 42, 10].indexOfMin() <comment>//Returns 3</comment>
+				</div>
+
+				<h3 class="codeTitle" id="Array.prototype.maxArray">Array.prototype.maxArray()</h3>
+
+				<p>Returns value of biggest value in an array.</p>
+
+				<div class="code">
+					[56, 78, 42, 10].maxArray() <comment>//Returns 78</comment>
+				</div>
+
+				<h3 class="codeTitle" id="Array.prototype.minArray">Array.prototype.minArray()</h3>
+
+				<p>Returns value of smallest value in an array.</p>
+
+				<div class="code">
+					[56, 78, 42, 10].minArray() <comment>//Returns 10</comment>
+				</div>
+
+				<h3 class="codeTitle" id="Array.prototype.toLowerCase">Array.prototype.toLowerCase()</h3>
+
+				<p>Lower cases all values in an array.</p>
+
+				<div class="code">
+					["hElLo", "1", "wOrLd"].toLowerCase() <comment>//Returns Array(3) [ "hello", "1", "world" ]</comment>
+				</div>
+				
+				<h3 class="codeTitle" id="Array.prototype.toUpperCase">Array.prototype.toUpperCase()</h3>
+
+				<p>Upper cases all values in an array.</p>
+
+				<div class="code">
+					["hello", 1, "world"].toUpperCase() <comment>//Returns Array(3) [ "HELLO", 1, "WORLD" ]</comment>
+				</div>
+
+				<h2 id="functions">Functions</h2>
+
+				<h3 class="codeTitle first" id="lr.generateRand">lr.generateRand()</h3>
+
+				<p>Returns a random string of character. The function takes in two arguments, the first one indicates how many characters you want and the second one takes the type of string you want.</p>
+
+				<div class="code">
+					lr.generateRand(12) <comment>//Returns 12 character number (Eg: 704903664315)</comment><br /><br />
+					lr.generateRand(12, "alphanum") <comment>//Returns a 12 character alphanumeric string (Eg: GEtL3uWk2OA6)</comment>
+				</div>
+				
+				<h5>Types</h5>
+				<p><strong>alphanum</strong>- For alphanumeric string</p>
+				<p><strong>string</strong>- For string with only alphabets</p>
+				<p><strong>*Leave second argument as blank to get a string with only numbers</strong></p>
+
+				<h3 class="codeTitle first" id="lr.getAbsoluteUrl">lr.getAbsoluteUrl()</h3>
+
+				<p>Gets absolute url and adds passed argument.</p>
+
+				<div class="code">
+					lr.getAbsoluteUrl("hello")<br /><br />
+					
+					<comment>//Eg: www.xyz.com/hello or www.xyz.com/view/hello</comment>
+				</div>
+
+				<h3 class="codeTitle" id="lr.getURLargs">lr.getURLargs()</h3>
+
+				<p>Gets arguments from URL, follow format below.</p>
+
+				<div class="code">
+					<comment>//URL: www.xyx.com/view?hello&world</comment><br /><br />
+					lr.getURLargs() <br /><br />
+					<comment>//Returns Array [ "hello", "world" ]</comment>
+				</div>
+
+				<h3></h3>
+
+
+				
+	</div>
+</body>
+</html>
