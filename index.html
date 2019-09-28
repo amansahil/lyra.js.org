@@ -1,126 +1,102 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Lyra-JS</title>
+  <title>Lyra-JS</title>
 
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-	<meta name="keywords" content="lyra,lyra-js,lyrajs,date,dates,string,array,javascript,npm,cdn,docs,documentation">
-	<meta name="description" content="A tiny javascript library that makes code look neater, dates easier and much more">
+  <meta name="keywords"
+    content="lyra,lyra-js,lyrajs,date,dates,string,array,javascript,npm,cdn,docs,documentation,manipulation">
+  <meta name="description" content="A nano javascript library that makes dates easier">
 
-	<script src="public/scripts/lyra.min.js"></script>
+  <script src="public/scripts/lyra.min.js"></script>
 
-	<script src="public/scripts/jquery.js"></script>
+  <script src="public/scripts/jquery.js"></script>
 
-	<link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
 
-	<script src="public/bootstrap/js/bootstrap.min.js"></script>
+  <script src="public/bootstrap/js/bootstrap.min.js"></script>
 
-	<script defer src="public/scripts/all.js"></script>
+  <script defer src="public/scripts/all.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="public/main.css">
-
+  <link rel="stylesheet" type="text/css" href="public/main.css">
 </head>
+
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand mb-0 h1" href="#">Lyra</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" href="#">Lyra</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item  active">
-	        <a class="nav-link" href="#">Home</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="./docs.html">Documentation</a>
-          </li>
-          <li class="nav-item">
-	        <a class="nav-link" href="./about.html">About</a>
-	      </li>
-	    </ul>
-	    <ul class="navbar-nav my-2 my-lg-0">
-	        <li class="nav-item"><a href="https://www.github.com/amansahil/lyra-js" target="_blank" class="nav-link">
-	        	<i class="fab fa-github fa-lg"></i>
-	        	&nbsp;GitHub
-	        	</a>
-          </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item  active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./docs.html">Documentation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./docs-old.html">Legacy Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./about.html">About</a>
+        </li>
       </ul>
-	  </div>
-	</nav>
-	<div class="container">
-        <h1>Lyra-JS</h1>
-        
-        <h2>Installation</h2>
-        <p>NPM: <code>npm install lyra-js --save</code></p>
-        <p>CDN: <code>https://lyra-js.firebaseapp.com/lyra.min.js</code></p>
+      <ul class="navbar-nav my-2 my-lg-0">
+        <li class="nav-item"><a href="https://www.github.com/amansahil/lyra-js" target="_blank" class="nav-link">
+            <i class="fab fa-github fa-lg"></i>
+            &nbsp;GitHub
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <h1>Lyra-JS</h1>
 
-        <h2>Selectors made neater</h2>
-        <div class="code">
-            lr.i('id') <comment>//Instead of document.getElementById()</comment> <br />
-            lr.q('.class') <comment>//Instead of document.querySelector()</comment> <br />
-            lr.qa('input') <comment>//Instead of document.querySelectorAll()</comment> <br /> 
-        </div>
+    <h2>Installation</h2>
+    <p>NPM: <code>npm install lyra-js --save</code></p>
+    <p>CDN: <code>https://lyra-js.firebaseapp.com/lyra.min.js</code></p>
 
-        <h2>Dates are hard but they don't need to be in javascript</h2>
+    <h2>Dates are hard but they don't need to be in javascript</h2>
 
-        <div class="code">
-            lr.add("5 days") <comment>//Adds 5 days to current date</comment> <br/>
-            lr.add("Tuesday", "Sat, 30 Jun 2018 12:43:00") <comment>//Moves date to next Tuesday</comment><br /><br />
-        
-            lr.sub("5 months") <comment>//Subtracts 5 months from current date</comment><br /><br />
-        
-            lr.getTimeByZone("JST") <comment>//Gets current date and time in Japan</comment> <br /><br />
-        
-            lr.convertDateAdvanced("dd, mm yy", "30, June 2018") <br /><br />
-        
-            <comment>//Converts any date format to a valid date string or date object</comment><br /><br /> 
-        
-            lr.convertDateAdvanced("mm, this is text hh@dd yy yy ss min", "07, this is text 6@3 2018 2018 13 13") <br /><br />
-        
-            <comment>//Yes, Even Something like this</comment><br /><br />
-        
-            lr.dateDifference(date, date2)<br /><br />
-            
-            <comment>//Gets the difference in years, months, days or even in hours, minutes and seconds</comment><br /><br />
-        
-            <comment>//And yes, leap years included</comment><br /><br />
-            
-            <comment>//These are just a few of the things lyra-js can do for dates</comment>
-        </div>
+    <div class="code">
+      lr.add("5 days") <comment>// Adds 5 days to current date</comment> <br />
+      lr.add("Tuesday", "Sat, 30 Jun 2018 12:43:00") <comment>// Moves date to next Tuesday</comment><br /><br />
 
-        <h2>A useful bunch of functions is better than a bunch of functions</h2>
+      lr.sub("5 months") <comment>// Subtracts 5 months from current date</comment><br /><br />
 
-        <div class="code">
-            lr.generateRand(6, "alphanum") <comment>//Generates a random alphanumeric string</comment><br /><br />
+      lr.getTimeByZone("JST") <comment>// Gets current date and time in Japan</comment> <br /><br />
 
-            lr.getAbsoluteUrl("hello")<br /><br />
-            
-            <comment>//Gets absolute URL of any page</comment><br /><br />
-        
-            <comment>//Eg: www.xyz.com/hello or www.xyz.com/view/hello</comment><br /><br />
-        
-            "String".forEach(function(letter, i){ <br/><br/>
-        
-            })  <comment>//Loops for each letter</comment><br /><br />
-        
-            "String of words".forEachWord(function(word, i){ <br/><br/>
-        
-            }) <comment>//Loops for each word</comment><br /><br />
-        
-            ["hello", "1", "world"].toUpperCase() <comment>//Makes all strings in an array upper case</comment><br /><br />
-        
-            <comment>//We have so much more, check out our docs</comment>
-        </div>
+      lr.convertDate("dd, mm yy", "30, June 2018") <br /><br />
 
-        <h2>Docs</h2>
-        <p>Check out our docs <a href="./docs.html">here</a></p>
+      <comment>//C onverts any date format to a valid date string or date object</comment><br /><br />
 
-	</div>
+      lr.convertDate("mm, this is text hh@dd yy yy ss min", "07, this is text 6@3 2018 2018 13 13") <br /><br />
+
+      <comment>// Yes, Even Something like this</comment><br /><br />
+
+      lr.dateDifference(date, date2)<br /><br />
+
+      <comment>// Gets the difference in years, months, days or even in hours, minutes and seconds</comment><br /><br />
+
+      <comment>// And yes, leap years included</comment><br /><br />
+
+      <comment>// These are just a few of the things lyra-js can do for dates</comment>
+    </div>
+
+    <h2>Docs</h2>
+    <p>Check out our docs <a href="./docs.html">here</a></p>
+
+  </div>
 </body>
+
 </html>
